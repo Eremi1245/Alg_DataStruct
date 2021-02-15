@@ -29,11 +29,13 @@ def check_1(lst_obj):
 
     Сложность: !!!.
     """
-    lst_to_set = set(lst_obj)  # в таблице - O(len(lst_obj)),  но я так понимаю что здесь все равно линейная сложность O(n)
-    							# мы же не знаем каждый раз размер списка
+    lst_to_set = set(
+        lst_obj)  # в таблице - O(len(lst_obj)),  но я так понимаю что здесь все равно линейная сложность O(n)
+    # мы же не знаем каждый раз размер списка
     return lst_to_set  # return константа O(1)
 
-#Общая сложность O(n)
+
+# Общая сложность O(n)
 #############################################################################################
 def check_2(lst_obj):
     """Функция должная вернуть True, если все элементы списка различаются.
@@ -45,10 +47,11 @@ def check_2(lst_obj):
 
     Сложность: !!!.
     """
-    for j in range(len(lst_obj)):          # for j in range() - сложность O(n),   len(lst_obj) - O(1)
-        if lst_obj[j] in lst_obj[j+1:]:    # поиск в списке  - O(n)
-            return False                   # return константа O(1)
-    return True                            # return константа O(1)
+    for j in range(len(lst_obj)):  # сложность - O(n)
+        if lst_obj[j] in lst_obj[j + 1:]:  # поиск в списке  - O(n)
+            return False  # return константа O(1)
+    return True  # return константа O(1)
+
 
 # общая сложность O(n)
 #############################################################################################
@@ -61,13 +64,15 @@ def check_3(lst_obj):
 
     Сложность: !!!
     """
-    lst_copy = list(lst_obj)                 # в таблице - O(len(lst_obj)),  но я так понимаю что здесь все равно линейная сложность O(n)
-    lst_copy.sort()                          # O(n log n)
-    for i in range(len(lst_obj) - 1):        # for j in range() - сложность O(n),   len(lst_obj) - O(1)
-        if lst_copy[i] == lst_copy[i+1]:     # lst1==lst2 -  сложность O(n), но в данном случае вытягивается по одному значению
-        									 # поэтому я думаю что сложность O(1)
-            return False                     # return константа O(1)
-    return True                              # return константа O(1)
+    lst_copy = list(
+        lst_obj)  # в таблице - O(len(lst_obj)),  но я так понимаю что здесь все равно линейная сложность O(n)
+    lst_copy.sort()  # O(n log n)
+    for i in range(len(lst_obj) - 1):  # сложность - O(n)
+        if lst_copy[i] == lst_copy[i + 1]:  # lst1==lst2 -  сложность O(n), но в данном случае вытягивается по одному
+            # значению, поэтому я думаю что сложность O(1)
+            return False  # return константа O(1)
+    return True  # return константа O(1)
+
 
 # общая сложность O(n log n)
 #############################################################################################

@@ -20,23 +20,25 @@
 А без столкновения со сложностями его не развить.
 """
 
-def f_o_n2(list):
-	result=0						#O(1)
-	for i in range (len(list)):		#
-		for i in range (len(list)):	# так как операция выполняется в дважды в любом случае сложность O(n^2)
-			if list[i]<=result:		# O(1)
-				result=list[i]		#O(1)
 
-	return result					#O(1)
+def f_o_n2(lst_obj):
+    result = 0  # O(1)
+    for i in range(len(lst_obj)):  #
+        for s in range(len(lst_obj)):  # так как операция выполняется в дважды в любом случае сложность O(n^2)
+            if lst_obj[s] <= result:  # O(1)
+                result = lst_obj[s]  # O(1)
+
+    return result  # O(1)
+
+
 # Общая сложность O(n^2)
 
 
+def f_o_n(lst_obj):
+    result = lst_obj[0]  # O(1)
+    for i in range(len(lst_obj)):  # for i in range() - сложность O(n),   len(list) - O(1)
+        if lst_obj[i] <= result:  # O(1)
+            result = lst_obj[i]  # O(1)
+    return result  # O(1)
 
-def f_o_n(list):
-	result=list[0]				# O(1)
-	for i in range (len(list)): # for i in range() - сложность O(n),   len(list) - O(1)
-		if list[i]<=result:		# O(1)
-			result=list[i]		# O(1)
-	return result				# O(1)
-
-	# Общая сложность за счет обхода спика O(n)
+# Общая сложность за счет обхода спика O(n)

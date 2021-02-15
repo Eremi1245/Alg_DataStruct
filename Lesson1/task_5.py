@@ -24,6 +24,7 @@
 # 2) lst = [[], [], [], [],....]
 """
 
+
 class StackClass:
     def __init__(self):
         self.elems = []
@@ -33,10 +34,10 @@ class StackClass:
 
     def push_in(self, el):
         """Предполагаем, что верхний элемент стека находится в конце списка"""
-        if self.stack_size()<8:
-        	self.elems.append(el)
+        if self.stack_size() < 8:
+            self.elems.append(el)
         else:
-        	return 'Стек заполнен'
+            return 'Стек заполнен'
 
     def pop_out(self):
         return self.elems.pop()
@@ -47,14 +48,15 @@ class StackClass:
     def stack_size(self):
         return len(self.elems)
 
-structure=[]
-stack=StackClass()
-for i in range(1,101):
-	if stack.push_in(f'тарелка№{i}') == 'Стек заполнен':
-		structure.append(stack)
-		stack=StackClass()
-		stack.push_in(f'тарелка№{i}')
-if 100-1%8!=0:
-	structure.append(stack)
 
-print (structure)
+structure = []
+stack = StackClass()
+for i in range(1, 101):
+    if stack.push_in(f'тарелка№{i}') == 'Стек заполнен':
+        structure.append(stack)
+        stack = StackClass()
+        stack.push_in(f'тарелка№{i}')
+if 100 - 1 % 8 != 0:
+    structure.append(stack)
+
+# print(structure)

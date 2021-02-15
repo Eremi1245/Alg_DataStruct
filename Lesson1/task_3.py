@@ -22,50 +22,53 @@
 Выведите результат.
 """
 
-Data_base={'Лукоил':100000000,'Газпром':526000000,'Ромашка':569856,'Банк России':5000005,'Лимбо':15426585} # O(1)
+data_base = {'Лукоил': 100000000, 'Газпром': 526000000, 'Ромашка': 569856, 'Банк России': 5000005, 'Лимбо': 15426585}
+
+
+# сложность - O(1)
 
 
 # Общая функция для 1 и 2 варианта
-def key_from_dict(Data_base,lst):
-	''' Принимаем отсортированные данные и по ним достаем ключи из словаря с фирмами, что бы отдать
-	читаемый результат 
-	'''
-	result={}											# O(1) - присваивание
-	for i in list(Data_base.keys()):					# for i in range() - сложность O(n),  Data_base.keys() - O(1)
-		if Data_base[i] in lst:							# поиск в списке  - O(n)
-			result[i]=lst[lst.index(Data_base[i])]		# O(1) - присваивание
-	return result										# return константа O(1)
+def key_from_dict(db_obj, lst):
+	""" Принимаем отсортированные данные и по ним достаем ключи из словаря с фирмами, что бы отдать
+	читаемый результат
+	"""
+	result = {}  # O(1) - присваивание
+	for i in list(db_obj.keys()):  # for i in range() - сложность O(n),  Data_base.keys() - O(1)
+		if db_obj[i] in lst:  # поиск в списке  - O(n)
+			result[i] = lst[lst.index(db_obj[i])]  # O(1) - присваивание
+	return result  # return константа O(1)
 
 
 # мне кажется, что так как изначально неивестно 2 переменных, то сложность O(log n)
 
 
-
 # Первый вариант
-def first_option(Data_base):
-	value=list(Data_base.values())					# O(n)
-	lst=[]											# O(1)
-	for i in range (3):								# O(1)
-		m=max(value)								# O(1)
-		lst.append(m)								# O(1)
-		value.remove(m)								# O(1)
-	return key_from_dict(Data_base,lst)				# return O(1), функция O(log n)
+def first_option(db_obj):
+	value = list(db_obj.values())  # O(n)
+	lst = []  # O(1)
+	for i in range(3):  # O(1)
+		m = max(value)  # O(1)
+		lst.append(m)  # O(1)
+		value.remove(m)  # O(1)
+	return key_from_dict(db_obj, lst)  # return O(1), функция O(log n)
 
 
 # За счет того что функция использует другую функцию у которой сложность O(log n), 
 # сложность данной функции O(log n)
-	
-# print (first_option(Data_base))
 
-#Второй вариант
+# print(first_option(data_base))
 
-def second_option(Data_base):
-	lst=sorted(list(Data_base.values()),reverse=True)[:3] # O(n log n)
-	return key_from_dict(Data_base,lst)						# return O(1), функция O(log n)  
+
+# Второй вариант
+
+def second_option(db_obj):
+	lst = sorted(list(db_obj.values()), reverse=True)[:3]  # O(n log n)
+	return key_from_dict(db_obj, lst)  # return O(1), функция O(log n)
+
 
 # Сложность данной функции O(n log n)
 
-# print(second_option(Data_base))
-
+# print(second_option(data_base))
 
 # Эффективнее первый вариант, но второй удобнее

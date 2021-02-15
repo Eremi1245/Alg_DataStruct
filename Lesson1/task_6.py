@@ -19,7 +19,7 @@
 class QueueClass:
     def __init__(self):
         self.elems = []
-        self.name='Базовая очередь'
+        self.name = 'Базовая очередь'
 
     def is_empty(self):
         return self.elems == []
@@ -32,32 +32,31 @@ class QueueClass:
 
     def size(self):
         return len(self.elems)
-    
+
     def __str__(self):
-    	return f'Это {self.name}, в ней содержаться такие элементы {self.elems}'
-
-class Decided_Queue_Class(QueueClass):
-	def __init__(self):
-		super(Decided_Queue_Class, self).__init__()
-		self.name='Очередь решенных задач'
+        return f'Это {self.name}, в ней содержаться такие элементы {self.elems}'
 
 
-class Fix_Queue_Class(QueueClass):
-	def __init__(self):
-		super(Fix_Queue_Class, self).__init__()
-		self.name='Очередь задач для доработки'
+class DecidedQueueClass(QueueClass):
+    def __init__(self):
+        super(DecidedQueueClass, self).__init__()
+        self.name = 'Очередь решенных задач'
 
 
+class FixQueueClass(QueueClass):
+    def __init__(self):
+        super(FixQueueClass, self).__init__()
+        self.name = 'Очередь задач для доработки'
 
-task_board=[]
 
-queue=QueueClass()
-decided_queue=Decided_Queue_Class()
-fix_queue=Fix_Queue_Class()
+task_board = []
+
+queue = QueueClass()
+decided_queue = DecidedQueueClass()
+fix_queue = FixQueueClass()
 task_board.append(queue)
 task_board.append(decided_queue)
 task_board.append(fix_queue)
-
 
 queue.to_queue('Первая задача')
 queue.to_queue('Вторая задача')
@@ -80,6 +79,5 @@ fix_queue.to_queue(queue.from_queue())
 fix_queue.to_queue(queue.from_queue())
 fix_queue.to_queue(queue.from_queue())
 
-
 for i in task_board:
-	print(i)
+    print(i)
