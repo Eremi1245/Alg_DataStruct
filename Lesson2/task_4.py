@@ -12,3 +12,19 @@
 Подсказка:
 Каждый очередной элемент в 2 раза меньше предыдущего и имеет противоположный знак
 """
+lst_obj = [1]
+
+
+def recurcion(n):
+    if n == 1:
+        print(f'Сумма элементов равна {sum(lst_obj)}')
+    else:
+        if n % 2 == 0:
+            lst_obj.append(lst_obj[-1] / -2)
+            recurcion(n - 1)
+        else:
+            lst_obj.append(lst_obj[-1] / -2)
+            recurcion(n - 1)
+
+
+recurcion(3)

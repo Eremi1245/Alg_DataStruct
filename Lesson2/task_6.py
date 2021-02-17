@@ -12,21 +12,25 @@
 Базовый случай здесь - угадали число или закончились попытки
 """
 import random
-random.randint(5,89)
 
-mistery_value = random.randint(0, 100)
-print('Привет,я загадал число от 0 до 100, угадаешь его за 10 попыток?')
 
-def recursion(n,attempt=0):
+def recursion(n, attempt=0):
     if attempt < 10:
-        print (f'Осталось {10-attempt} попыток')
-        inp= input('Введи число : ')
-        if n==inp:
-            print(f'Правильно!!! Ты угадал с {10-attempt} попытки ')
-
+        print(f'Осталось {10 - attempt} попыток')
+        inp = int(input('Введи число : '))
+        if n == inp:
+            print(f'Правильно!!! Ты угадал с {attempt} попытки ')
+        if n > inp:
+            print(f'Не правильно, число больше')
+            recursion(n, attempt + 1)
+        if n < inp:
+            print(f'Не правильно, число меньше')
+            recursion(n, attempt + 1)
+    else:
+        print(f'Ты проиграл, осталось 0 попыток, правильное число {n}')
 
 
 mistery_value = random.randint(0, 100)
 print('Привет,я загадал число от 0 до 100, угадаешь его за 10 попыток?')
 
-recursion(n,attempt)
+recursion(mistery_value)
