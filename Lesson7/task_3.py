@@ -45,3 +45,83 @@ for i in
 
 
 """
+
+import timeit
+import random
+from statistics import median
+
+# print(
+#     timeit.timeit(
+#         "merge_sort(orig_list[:])",
+#         globals=globals(),
+#         number=1000))
+
+m = random.randint(1, 100)
+
+
+# orig_list = [random.randint(-100, 100) for _ in range(2*m+1)]
+
+def func_1(lst_obj):
+    left = []
+    right = []
+    middle = -1  # переменная для подсчета равных по значению элементов, -1 - потому что в любом случае будет
+    # совпадение с
+    # c самим собой
+    for i in lst_obj:
+        for j in lst_obj:
+            if i > j:
+                left.append(j)
+            elif i < j:
+                right.append(j)
+            else:
+                middle += 1
+        if len(left) + middle == len(right) or len(left) == len(right) + middle:
+            return i
+        left.clear()
+        right.clear()
+        middle = -1
+
+
+# if median(orig_list)==func_1(orig_list):
+#     print(f'm={m}, Медиана : {func_1(orig_list)}')
+# else:
+#     print('Неправильно')
+
+# orig_list_2 = [random.randint(-100, 100) for _ in range(2*m+1)]
+
+
+def func_2(lst_obj):
+    for i in range(len(lst_obj) // 2):
+        del lst_obj[lst_obj.index(max(lst_obj))]
+    return max(lst_obj)
+
+
+# if median(orig_list_2)==func_2(orig_list_2[:]):
+#     print(f'm={m}, Медиана : {func_2(orig_list_2[:])}')
+# else:
+#     print('Неправильно')
+
+# замеры 10 элементов - 0.0070 сек, 100 элементов - 0.1568 секунд, 1000 элементов - 68.12
+# m=5
+orig_list = [random.randint(-100, 100) for _ in range(2 * m + 1)]
+
+print(
+    timeit.timeit(
+        "func_1(orig_list)",
+        globals=globals(),
+        number=1000))
+# замеры 10 элементов - 0.0021 сек, 100 элементов - 0.0778 секунд, 1000 элементов - 6.56
+print(
+    timeit.timeit(
+        "func_2(orig_list[:])",
+        globals=globals(),
+        number=1000))
+# замеры 10 элементов - 0.0004 сек, 100 элементов - 0.0028 секунд, 1000 элементов - 0.0804
+print(
+    timeit.timeit(
+        "median(orig_list)",
+        globals=globals(),
+        number=1000))
+
+# Второй вариант нахождения медианы(удалением наибольших чисел) быстрее чем первый. встроеная фукция median ожидаемо
+# лучше остальных
