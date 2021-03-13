@@ -50,9 +50,10 @@ def bubble_sort_break(lst_obj):
     return lst_obj
 
 
-# orig_list = [random.randint(-100, 100) for _ in range(1000)] # рандомный список orig_list=[x for x in range (1000,
-# 0,-1)] # полностью отсортированный список orig_list=[x for x in range (1000,500,-1)]+[random.randint(0, 500) for _
-# in range(500)] # наполовину отсортированный список
+# orig_list = [random.randint(-100, 100) for _ in range(1000)] # рандомный список
+# orig_list=[x for x in range (1000,0,-1)] # полностью отсортированный список
+# orig_list=[x for x in range (1000,500,-1)]+[random.randint(0, 500) for _ in range(500)] # наполовину отсортированный
+# список
 
 
 print('Замеры сортировка пузырьком по убыванию',
